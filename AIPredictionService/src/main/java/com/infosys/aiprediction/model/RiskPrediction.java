@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -42,7 +42,12 @@ public class RiskPrediction {
     private String riskLevel;
     private Double confidence;
 
+    // AI Clinical Result
+    private String diagnosis;
+    private String recommendation;
+    private Integer healthScore;
+
     // Metadata
-    private LocalDate predictionDate;
+    private LocalDateTime predictionDate;
     private String modelVersion;
 }

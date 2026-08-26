@@ -11,7 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
 
 @Component
@@ -33,7 +33,7 @@ public class CsvPatientLoader implements CommandLineRunner {
 
             ClassPathResource resource = new ClassPathResource("patients.csv");
 
-            try (CSVReader csvReader = new CSVReaderBuilder(new FileReader(resource.getFile()))
+            try (CSVReader csvReader = new CSVReaderBuilder(new InputStreamReader(resource.getInputStream()))
                     .withCSVParser(
                             new CSVParserBuilder()
                                     .withSeparator('\t')

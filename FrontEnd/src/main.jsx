@@ -2,18 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { initKeycloak, getUserRoles, getUsername } from "./keycloak";
 
-import keycloak from "./keycloak";
-
-keycloak
-    .init({
-        onLoad: "login-required",
-        checkLoginIframe: false,
-    })
+initKeycloak()
     .then((authenticated) => {
         if (!authenticated) {
-            window.location.reload();
+            console.error("Keycloak authentication failed");
+            return;
         }
+
+        console.log("Keycloak authenticated:", authenticated);
+        console.log("Logged in user:", getUsername());
+        console.log("Keycloak roles:", getUserRoles());
 
         ReactDOM.createRoot(document.getElementById("root")).render(
             <React.StrictMode>
@@ -21,6 +21,6 @@ keycloak
             </React.StrictMode>
         );
     })
-    .catch((err) => {
-        console.error("Keycloak initialization failed", err);
+    .catch((error) => {
+        console.error("Keycloak initialization failed:", error);
     });

@@ -6,15 +6,34 @@ import java.util.List;
 
 public interface PredictionService {
 
-    RiskPrediction savePrediction(RiskPrediction prediction);
+    RiskPrediction savePrediction(
+            RiskPrediction prediction
+    );
 
     List<RiskPrediction> getAllPredictions();
 
-    RiskPrediction getPredictionById(String id);
+    RiskPrediction getPredictionById(
+            String id
+    );
 
-    List<RiskPrediction> getPredictionsByPatientId(String patientId);
+    List<RiskPrediction> getPredictionsByPatientId(
+            String patientId
+    );
 
-    RiskPrediction updatePrediction(String id, RiskPrediction prediction);
+    RiskPrediction updatePrediction(
+            String id,
+            RiskPrediction prediction
+    );
 
-    void deletePrediction(String id);
+    void deletePrediction(
+            String id
+    );
+
+    // ==========================================
+    // GENERATE PREDICTION FROM LATEST VITALS
+    // ==========================================
+
+    RiskPrediction generatePredictionFromVitals(
+            String patientId
+    );
 }

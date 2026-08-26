@@ -1,0 +1,86 @@
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.65);
+    backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.delete-modal{
+    width:420px;
+    background:#ffffff;
+    border-radius:24px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.30);
+    animation:popup .25s ease;
+}
+
+.delete-modal h2{
+    margin:0;
+    font-size:30px;
+    color:#dc2626;
+    font-weight:800;
+}
+
+.delete-modal p{
+    margin:20px 0 30px;
+    color:#475569;
+    font-size:16px;
+    line-height:1.6;
+}
+
+.delete-modal strong{
+    color:#0f172a;
+}
+
+.delete-buttons{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+}
+
+.cancel-btn{
+    padding:12px 26px;
+    border:none;
+    border-radius:12px;
+    background:#e2e8f0;
+    color:#334155;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s;
+}
+
+.cancel-btn:hover{
+    background:#cbd5e1;
+}
+
+.delete-btn{
+    padding:12px 26px;
+    border:none;
+    border-radius:12px;
+    background:#dc2626;
+    color:white;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}

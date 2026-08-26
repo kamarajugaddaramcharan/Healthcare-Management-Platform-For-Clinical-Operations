@@ -26,7 +26,14 @@ public class HealthTwinServiceImpl implements HealthTwinService {
 
     @Override
     public HealthTwin getById(String id) {
-        return repository.findById(id).orElse(null);
+        HealthTwin twin = repository.findById(id).orElse(null);
+        if (twin == null) {
+            List<HealthTwin> twins = repository.findByPatientId(id);
+            if (twins != null && !twins.isEmpty()) {
+                twin = twins.get(0);
+            }
+        }
+        return twin;
     }
 
     @Override

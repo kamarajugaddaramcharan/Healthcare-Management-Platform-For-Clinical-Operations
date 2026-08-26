@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fhir")
-@CrossOrigin(origins = "*")
 public class FhirController {
     @Autowired
     private FhirService service;

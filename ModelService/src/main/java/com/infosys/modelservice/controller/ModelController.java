@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/models")
-@CrossOrigin(origins = "*")
 public class ModelController {
 
     @Autowired

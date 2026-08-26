@@ -10,6 +10,7 @@ public class Patient {
     private String id;
 
     private String patientId;
+    private String name;          // Full name of the patient
     private int age;
     private String gender;
     private String medicalCondition;
@@ -23,18 +24,41 @@ public class Patient {
     private String hospitalId;
     private int lengthOfStay;
 
+    // Doctor assignment
+    private String doctorId;
+    private String doctorName;
+
+    // Keycloak patient account mapping
+    private String keycloakId;
+    private String keycloakUsername;
+
     public Patient() {
     }
 
-    public Patient(String id, String patientId, int age, String gender,
-                   String medicalCondition, String treatment,
-                   String outcome, String insuranceType,
-                   double income, String region,
-                   String smokingStatus, String admissionType,
-                   String hospitalId, int lengthOfStay) {
-
+    public Patient(
+            String id,
+            String patientId,
+            String name,
+            int age,
+            String gender,
+            String medicalCondition,
+            String treatment,
+            String outcome,
+            String insuranceType,
+            double income,
+            String region,
+            String smokingStatus,
+            String admissionType,
+            String hospitalId,
+            int lengthOfStay,
+            String doctorId,
+            String doctorName,
+            String keycloakId,
+            String keycloakUsername
+    ) {
         this.id = id;
         this.patientId = patientId;
+        this.name = name;
         this.age = age;
         this.gender = gender;
         this.medicalCondition = medicalCondition;
@@ -47,6 +71,10 @@ public class Patient {
         this.admissionType = admissionType;
         this.hospitalId = hospitalId;
         this.lengthOfStay = lengthOfStay;
+        this.doctorId = doctorId;
+        this.doctorName = doctorName;
+        this.keycloakId = keycloakId;
+        this.keycloakUsername = keycloakUsername;
     }
 
     public String getId() {
@@ -63,6 +91,14 @@ public class Patient {
 
     public void setPatientId(String patientId) {
         this.patientId = patientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -161,11 +197,48 @@ public class Patient {
         this.lengthOfStay = lengthOfStay;
     }
 
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    // ================================
+    // KEYCLOAK MAPPING
+    // ================================
+
+    public String getKeycloakId() {
+        return keycloakId;
+    }
+
+    public void setKeycloakId(String keycloakId) {
+        this.keycloakId = keycloakId;
+    }
+
+    public String getKeycloakUsername() {
+        return keycloakUsername;
+    }
+
+    public void setKeycloakUsername(String keycloakUsername) {
+        this.keycloakUsername = keycloakUsername;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
                 "id='" + id + '\'' +
                 ", patientId='" + patientId + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", medicalCondition='" + medicalCondition + '\'' +
@@ -178,6 +251,10 @@ public class Patient {
                 ", admissionType='" + admissionType + '\'' +
                 ", hospitalId='" + hospitalId + '\'' +
                 ", lengthOfStay=" + lengthOfStay +
+                ", doctorId='" + doctorId + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                ", keycloakId='" + keycloakId + '\'' +
+                ", keycloakUsername='" + keycloakUsername + '\'' +
                 '}';
     }
 }

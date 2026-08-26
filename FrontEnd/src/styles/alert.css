@@ -1,0 +1,47 @@
+.alert-actions{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn-view{
+    background:#2563EB;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-view:hover{
+    background:#1D4ED8;
+}
+
+.btn-ack{
+    background:#F59E0B;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-ack:hover{
+    background:#D97706;
+}
+
+.btn-resolve{
+    background:#10B981;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-resolve:hover{
+    background:#059669;
+}

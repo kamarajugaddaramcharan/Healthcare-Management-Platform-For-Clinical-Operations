@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllConsents } from "../services/consentService";
+import "../styles/consent.css";
 
 function Consent() {
 
@@ -10,47 +11,133 @@ function Consent() {
     }, []);
 
     const loadConsents = async () => {
+
         try {
+
             const data = await getAllConsents();
-            console.log(data);
+            console.log("Consents:", data);
             setConsents(data);
+
         } catch (err) {
+
             console.error(err);
+
         }
+
     };
 
     return (
-        <div className="patient-panel">
 
-            <h2>Patient Consents</h2>
+        <div className="consent-page">
 
-            <table className="table">
+            <div className="consent-header">
 
-                <thead>
-                <tr>
-                    <th>Patient ID</th>
-                    <th>Consent Type</th>
-                    <th>Status</th>
-                    <th>Granted Date</th>
-                </tr>
-                </thead>
+                <div>
 
-                <tbody>
+                    <h1>Patient Consent Management</h1>
 
-                {consents.map((consent) => (
-                    <tr key={consent.id}>
-                        <td>{consent.patientId}</td>
-                        <td>{consent.consentType}</td>
-                        <td>{consent.status}</td>
-                        <td>{consent.grantedDate}</td>
+                    <p>Manage permissions and access for patient healthcare records.</p>
+
+                </div>
+
+                <div className="total-card">
+
+                    {consents.length} Records
+
+                </div>
+
+            </div>
+
+            <div className="consent-table">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+
+                        <th>Resource</th>
+
+                        <th>Permission</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
                     </tr>
-                ))}
 
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+
+                    {consents.map((consent)=>(
+
+                        <tr key={consent.id}>
+
+                            <td>
+
+                                PAT-{consent.patientId}
+
+                            </td>
+
+                            <td>
+
+                                {consent.resourceType}
+
+                            </td>
+
+                            <td>
+
+                        <span className="permission">
+
+                            {consent.permission}
+
+                        </span>
+
+                            </td>
+
+                            <td>
+
+                        <span className={
+
+                            consent.status.toLowerCase()==="active"
+
+                                ? "active"
+
+                                : "inactive"
+
+                        }>
+
+                            {consent.status}
+
+                        </span>
+
+                            </td>
+
+                            <td>
+
+                                <button className="view-btn">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    ))}
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
+
     );
 }
 

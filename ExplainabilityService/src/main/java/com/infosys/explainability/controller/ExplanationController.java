@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/explanations")
-@CrossOrigin(origins = "*")
 public class ExplanationController {
 
     @Autowired

@@ -1,0 +1,89 @@
+.fhir-page{
+    padding:35px;
+}
+
+.fhir-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.fhir-header h1{
+    font-size:38px;
+    font-weight:800;
+    color:#0F172A;
+}
+
+.fhir-header p{
+    color:#64748B;
+    margin-top:6px;
+}
+
+.fhir-count{
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+    color:#fff;
+    padding:18px 26px;
+    border-radius:18px;
+    font-size:18px;
+    font-weight:700;
+}
+
+.fhir-table{
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 18px 45px rgba(15,23,42,.08);
+    border:1px solid #E5E7EB;
+}
+
+.fhir-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.fhir-table th{
+    background:#2563EB;
+    color:#fff;
+    padding:18px;
+    text-align:left;
+}
+
+.fhir-table td{
+    padding:18px;
+    border-bottom:1px solid #EEF2F7;
+}
+
+.fhir-table tr:hover{
+    background:#F8FAFC;
+}
+
+.fhir-resource{
+    background:#DBEAFE;
+    color:#1D4ED8;
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+.fhir-status{
+    background:#DCFCE7;
+    color:#15803D;
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:700;
+}
+
+.fhir-btn{
+    border:none;
+    background:#2563EB;
+    color:#fff;
+    padding:8px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.fhir-btn:hover{
+    background:#1D4ED8;
+}

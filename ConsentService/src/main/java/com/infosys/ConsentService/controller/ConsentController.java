@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/consents")
-@CrossOrigin(origins = "*")
 public class ConsentController {
 
     @Autowired

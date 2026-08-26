@@ -7,7 +7,7 @@ function Sidebar() {
 
             <h1 className="logo">🏥 MediSphere</h1>
 
-            <nav>
+            <nav className="menu">
 
                 <Link to="/">📊 Dashboard</Link>
 
@@ -21,7 +21,6 @@ function Sidebar() {
 
                 <Link to="/fhir">📄 FHIR</Link>
 
-                {/* New AI Prediction Menu */}
                 <Link to="/predictions">🤖 AI Predictions</Link>
 
             </nav>

@@ -1,6 +1,15 @@
-import { User, Calendar, Droplets, Heart } from "lucide-react";
+import {
+    User,
+    Calendar,
+    Droplets,
+    Heart,
+    Activity,
+    ShieldCheck,
+    Stethoscope,
+    Sparkles,
+} from "lucide-react";
 
-function PatientProfileCard({ patient }) {
+function PatientProfileCard({ patient, twin }) {
 
     if (!patient) {
         return (
@@ -13,80 +22,258 @@ function PatientProfileCard({ patient }) {
     const initials = patient?.name
         ? patient.name
             .split(" ")
-            .map(word => word[0])
+            .map((word) => word[0])
             .join("")
             .toUpperCase()
         : "PT";
 
+    const healthScore = 96;
+
     return (
+        <div
+            className="patient-profile-card"
+        >
+            <div className="row align-items-center">
 
-        <div className="patient-profile-card">
+                {/* Left */}
 
-            <div className="profile-left">
+                <div className="col-lg-4">
 
-                <div className="patient-avatar-placeholder">
-                    {initials}
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 20,
+                        }}
+                    >
+
+                        <div
+                            style={{
+                                width: 90,
+                                height: 90,
+                                borderRadius: "50%",
+                                background:
+                                    "linear-gradient(135deg,#2563eb,#06b6d4)",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                color: "#fff",
+                                fontSize: 30,
+                                fontWeight: 700,
+                            }}
+                        >
+                            {initials}
+                        </div>
+
+                        <div>
+
+                            <h2
+                                style={{
+                                    marginBottom: 6,
+                                    fontWeight: 700,
+                                    color: "#ffffff"
+                                }}
+                            >
+                                {patient.name}
+                            </h2>
+
+                            <p
+                                style={{
+                                    color: "#475569",
+                                    marginBottom: 12,
+                                }}
+                            >
+                                Patient ID : {patient.patientId}
+                            </p>
+
+                            <span
+                                style={{
+                                    background: "#dcfce7",
+                                    border: "1px solid #bbf7d0",
+                                    color: "#15803d",
+                                    padding: "8px 18px",
+                                    borderRadius: 30,
+                                    fontWeight: 600,
+                                    fontSize: 14,
+                                }}
+                            >
+                                Active Patient
+                            </span>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div>
+                {/* Center */}
 
-                    <h2>{patient.name}</h2>
+                <div className="col-lg-5">
 
-                    <p>
-                        Patient ID : {patient.patientId}
-                    </p>
+                    <div className="row g-3">
 
-                    <span className="status-badge">
-                        Active Patient
-                    </span>
+                        <InfoBox
+                            icon={<User size={20} />}
+                            title="Age"
+                            value={`${patient.age ?? "--"} Years`}
+                        />
+
+                        <InfoBox
+                            icon={<Heart size={20} />}
+                            title="Gender"
+                            value={patient.gender || "--"}
+                        />
+
+                        <InfoBox
+                            icon={<Droplets size={20} />}
+                            title="Blood Group"
+                            value={twin?.bloodGroup || "A+"}
+                        />
+
+                        <InfoBox
+                            icon={<Calendar size={20} />}
+                            title="Last Visit"
+                            value={patient.lastVisit || "Today"}
+                        />
+
+                        <InfoBox
+                            icon={<Activity size={20} />}
+                            title="Heart Rate"
+                            value={`${twin?.heartRate || 74} BPM`}
+                        />
+
+                        <InfoBox
+                            icon={<Stethoscope size={20} />}
+                            title="Doctor"
+                            value="Dr. Sarah Wilson"
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Right */}
+
+                <div className="col-lg-3">
+
+                    <div
+                        style={{
+                            background:
+                                "linear-gradient(135deg,#2563eb,#3b82f6)",
+                            color: "#fff",
+                            borderRadius: 22,
+                            padding: 25,
+                            textAlign: "center",
+                        }}
+                    >
+
+                        <Sparkles size={34} />
+
+                        <h5
+                            style={{
+                                marginTop: 15,
+                            }}
+                        >
+                            AI Health Score
+                        </h5>
+
+                        <h1
+                            style={{
+                                fontSize: 56,
+                                margin: "15px 0",
+                                fontWeight: 800,
+                            }}
+                        >
+                            {healthScore}
+                        </h1>
+
+                        <div
+                            style={{
+                                background: "rgba(255,255,255,.2)",
+                                borderRadius: 50,
+                                height: 10,
+                                overflow: "hidden",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: `${healthScore}%`,
+                                    height: "100%",
+                                    background: "#22c55e",
+                                }}
+                            />
+                        </div>
+
+                        <div
+                            style={{
+                                marginTop: 18,
+                                display: "flex",
+                                justifyContent: "center",
+                                gap: 8,
+                                alignItems: "center",
+                            }}
+                        >
+                            <ShieldCheck size={18} />
+
+                            <strong>Excellent</strong>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
+        </div>
+    );
+}
 
-            <div className="profile-right">
+function InfoBox({ icon, title, value }) {
 
-                <div className="info-box">
+    return (
 
-                    <User size={20} />
+        <div className="col-6">
 
-                    <div>
-                        <small>Age</small>
-                        <strong>{patient.age} Years</strong>
-                    </div>
+            <div
+                className="info-box"
+                style={{
+                    borderRadius: 18,
+                    padding: 15,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    height: "100%",
+                }}
+            >
 
+                <div
+                    style={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 12,
+                        background: "#dbeafe",
+                        color: "#2563eb",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    {icon}
                 </div>
 
-                <div className="info-box">
+                <div>
 
-                    <Droplets size={20} />
+                    <small
+                        style={{
+                            color: "#64748b",
+                        }}
+                    >
+                        {title}
+                    </small>
 
-                    <div>
-                        <small>Blood Group</small>
-                        <strong>{patient.bloodGroup}</strong>
-                    </div>
+                    <br />
 
-                </div>
-
-                <div className="info-box">
-
-                    <Heart size={20} />
-
-                    <div>
-                        <small>Gender</small>
-                        <strong>{patient.gender}</strong>
-                    </div>
-
-                </div>
-
-                <div className="info-box">
-
-                    <Calendar size={20} />
-
-                    <div>
-                        <small>Last Visit</small>
-                        <strong>{patient.lastVisit}</strong>
-                    </div>
+                    <strong style={{ color: "#0f172a" }}>{value}</strong>
 
                 </div>
 

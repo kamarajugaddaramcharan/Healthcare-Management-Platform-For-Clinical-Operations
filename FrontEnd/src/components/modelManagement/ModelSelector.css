@@ -1,0 +1,36 @@
+.model-selector{
+
+    display:flex;
+    gap:15px;
+    margin:25px 0;
+    flex-wrap:wrap;
+
+}
+
+.model-btn{
+
+    border:none;
+    background:#1e293b;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+    font-size:15px;
+
+}
+
+.model-btn:hover{
+
+    transform:translateY(-3px);
+    background:#2563eb;
+
+}
+
+.model-btn.active{
+
+    background:#2563eb;
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+
+}

@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface HealthTwinRepository extends MongoRepository<HealthTwin, String> {
 
-    Optional<HealthTwin> findByPatientId(String patientId);
+    java.util.List<HealthTwin> findByPatientId(String patientId);
 
 }

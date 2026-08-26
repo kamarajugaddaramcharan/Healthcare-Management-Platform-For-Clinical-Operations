@@ -18,14 +18,9 @@ const COLORS = ["#ef4444", "#f59e0b", "#22c55e"];
 function RiskChart() {
     return (
         <div
-            style={{
-                background: "#fff",
-                borderRadius: 18,
-                padding: 20,
-                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
-            }}
+            className="dashboard-card"
         >
-            <h3>AI Risk Distribution</h3>
+            <h2 style={{ margin: "0 0 18px 0", fontSize: "20px" }}>AI Risk Distribution</h2>
 
             <ResponsiveContainer width="100%" height={300}>
                 <PieChart>

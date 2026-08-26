@@ -1,4 +1,4 @@
-package com.infosys.HealthTwinService.config;
+/*package com.infosys.HealthTwinService.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,3 +26,8 @@ public class CorsConfig {
         return new CorsFilter(source);
     }
 }
+
+ */
+
+// CORS is handled by the API Gateway — no service-level CORS needed
+package com.infosys.HealthTwinService.config;

@@ -3,6 +3,8 @@ package com.infosys.VitalsService.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "vitals")
 public class Vital {
 
@@ -15,18 +17,27 @@ public class Vital {
     private double temperature;
     private double oxygenLevel;
 
+    // New Field
+    private LocalDateTime timestamp;
+
     public Vital() {
     }
 
-    public Vital(String id, String patientId, int heartRate,
-                 String bloodPressure, double temperature,
-                 double oxygenLevel) {
+    public Vital(String id,
+                 String patientId,
+                 int heartRate,
+                 String bloodPressure,
+                 double temperature,
+                 double oxygenLevel,
+                 LocalDateTime timestamp) {
+
         this.id = id;
         this.patientId = patientId;
         this.heartRate = heartRate;
         this.bloodPressure = bloodPressure;
         this.temperature = temperature;
         this.oxygenLevel = oxygenLevel;
+        this.timestamp = timestamp;
     }
 
     public String getId() {
@@ -75,5 +86,13 @@ public class Vital {
 
     public void setOxygenLevel(double oxygenLevel) {
         this.oxygenLevel = oxygenLevel;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }

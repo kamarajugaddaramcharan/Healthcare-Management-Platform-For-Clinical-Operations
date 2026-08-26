@@ -34,14 +34,9 @@ function HeartRateChart() {
 
     return (
         <div
-            style={{
-                background: "#fff",
-                padding: 20,
-                borderRadius: 18,
-                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
-            }}
+            className="dashboard-card"
         >
-            <h2>Heart Rate</h2>
+            <h2 style={{ margin: "0 0 18px 0", fontSize: "20px" }}>Heart Rate Monitoring</h2>
 
             <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>

@@ -9,7 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStreamReader;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 public class CsvDataLoader implements CommandLineRunner {
@@ -20,6 +20,7 @@ public class CsvDataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        // Don't import again if data already exists
         if (predictionRepository.count() > 0) {
             System.out.println("Dataset already imported.");
             return;
@@ -27,15 +28,15 @@ public class CsvDataLoader implements CommandLineRunner {
 
         CSVReader reader = new CSVReader(
                 new InputStreamReader(
-                        new ClassPathResource("dataset/heart_disease_cleveland.csv").getInputStream()
+                        new ClassPathResource("dataset/heart_disease_cleveland.csv")
+                                .getInputStream()
                 )
         );
 
-        String[] row;
-
-        // Skip header
+        // Skip CSV header
         reader.readNext();
 
+        String[] row;
         int patientNo = 101;
 
         while ((row = reader.readNext()) != null) {
@@ -44,6 +45,7 @@ public class CsvDataLoader implements CommandLineRunner {
 
             prediction.setPatientId("PAT" + patientNo++);
 
+            // Dataset Features
             prediction.setAge(parseInt(row[0]));
             prediction.setSex(parseInt(row[1]));
             prediction.setChestPainType(parseInt(row[2]));
@@ -59,7 +61,7 @@ public class CsvDataLoader implements CommandLineRunner {
             prediction.setThal(parseInt(row[12]));
             prediction.setTarget(parseInt(row[13]));
 
-            // Temporary AI logic
+            // Temporary Risk Logic
             if (prediction.getTarget() == 1) {
                 prediction.setRiskLevel("HIGH");
                 prediction.setRiskPercentage(90.0);
@@ -69,7 +71,10 @@ public class CsvDataLoader implements CommandLineRunner {
             }
 
             prediction.setConfidence(95.0);
-            prediction.setPredictionDate(LocalDate.now());
+
+            // Save current date & time
+            prediction.setPredictionDate(LocalDateTime.now());
+
             prediction.setModelVersion("AI Model v1.0");
 
             predictionRepository.save(prediction);
@@ -77,9 +82,9 @@ public class CsvDataLoader implements CommandLineRunner {
 
         reader.close();
 
-        System.out.println("=================================");
-        System.out.println("Heart Disease Dataset Imported");
-        System.out.println("=================================");
+        System.out.println("=========================================");
+        System.out.println(" Heart Disease Dataset Imported Successfully ");
+        System.out.println("=========================================");
     }
 
     private Integer parseInt(String value) {
