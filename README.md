@@ -1009,17 +1009,3 @@ The platform demonstrates how modern healthcare applications can combine:
 ### In one sentence
 
 > **A connected healthcare platform that transforms patient data into actionable clinical workflows through monitoring, AI-assisted insights, alerts and personalized care planning.**
-
----
-
-# ⚠️ Disclaimer
-
-This project is intended for **academic/demo purposes** and should not be used as a substitute for professional medical diagnosis or treatment.
-
-AI-generated outputs are decision-support information and require appropriate clinical review.
-
----
-
-# 📜 License
-
-For educational and project demonstration purposes.
